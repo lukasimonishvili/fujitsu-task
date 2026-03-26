@@ -19,16 +19,23 @@ public class AuthController : ControllerBase
     [HttpPost("register")]
     public async Task<IActionResult> Register(RegisterDto dto)
     {
-        var token = await _service.RegisterAsync(dto.Email, dto.Password);
-
-        if (token == null)
-            return BadRequest("User already exists");
-
-        return Ok(new
+        try
         {
-            message = "User registered. Confirm email using token.",
-            token = token
-        });
+            var token = await _service.RegisterAsync(dto);
+
+            if (token == null)
+                return BadRequest("User already exists");
+
+            return Ok(new
+            {
+                message = "User registered. Please confirm email.",
+                token = token
+            });
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
     }
 
     [HttpGet("confirm")]
@@ -45,16 +52,24 @@ public class AuthController : ControllerBase
     [HttpPost("login")]
     public async Task<IActionResult> Login(LoginDto dto)
     {
-        var user = await _service.LoginAsync(dto.Email, dto.Password);
-
-        if (user == null)
-            return Unauthorized("Invalid credentials or email not confirmed");
-
-        var token = _tokenGenerator.GenerateToken(user);
-
-        return Ok(new
+        try
         {
-            token = token
-        });
+            var user = await _service.LoginAsync(dto);
+
+            if (user == null)
+                return Unauthorized("Invalid credentials or email not confirmed");
+
+            var token = _tokenGenerator.GenerateToken(user);
+
+            return Ok(new
+            {
+                token = token
+            });
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+        
     }
 }
