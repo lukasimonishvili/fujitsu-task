@@ -3,8 +3,8 @@ WORKDIR /app
 
 COPY . ./
 
-RUN dotnet restore ./API/API.csproj
-RUN dotnet publish ./API/API.csproj -c Release -o /app/out
+RUN dotnet restore ./SupermarketBasket/API/API.csproj
+RUN dotnet publish ./SupermarketBasket/API/API.csproj -c Release -o /app/out
 
 FROM mcr.microsoft.com/dotnet/aspnet:6.0
 WORKDIR /app
