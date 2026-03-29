@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/Solution Items/">
     <File Path=".gitignore" />
+    <File Path="Dockerfile" />
   </Folder>
   <Project Path="API/API.csproj" Id="2a4a2576-9eaa-48d4-9a4e-c48ce6cd4ef2" />
   <Project Path="Application/Application.csproj" Id="83033871-4923-4651-89f2-bd950845f857" />
