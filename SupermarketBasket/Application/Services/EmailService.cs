@@ -10,8 +10,9 @@ public class EmailService : IEmailService
     {
         try
         {
-            var emailUser = Environment.GetEnvironmentVariable("lukasimonishvili1998@gmail.com");
-            var emailPass = Environment.GetEnvironmentVariable("tzvj nxvs rnhw cnnl");
+            var emailUser = "lukasimonishvili1998@gmail.com";
+
+            var emailPass = "tzvj nxvs rnhw cnnl";
 
             var smtpClient = new SmtpClient("smtp.gmail.com")
             {
@@ -22,7 +23,7 @@ public class EmailService : IEmailService
 
             var mail = new MailMessage
             {
-                From = new MailAddress(emailUser!),
+                From = new MailAddress(emailUser),
                 Subject = subject,
                 Body = body,
                 IsBodyHtml = true
