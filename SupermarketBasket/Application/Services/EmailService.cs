@@ -10,21 +10,20 @@ public class EmailService : IEmailService
     {
         try
         {
-            var emailUser = "lukasimonishvili1998@gmail.com";
-
-            var emailPass = "tzvj nxvs rnhw cnnl";
-
-            var smtpClient = new SmtpClient("smtp.gmail.com")
+            var smtpClient = new SmtpClient("sandbox.smtp.mailtrap.io")
             {
-                Port = 587,
-                Credentials = new NetworkCredential(emailUser, emailPass),
+                Port = 2525,
+                Credentials = new NetworkCredential(
+                    "78772b354c4394",
+                    "d71b9d065b594b"
+                ),
                 EnableSsl = true,
                 Timeout = 5000
             };
 
             var mail = new MailMessage
             {
-                From = new MailAddress(emailUser),
+                From = new MailAddress("simonishvililuka@gmail.com"),
                 Subject = subject,
                 Body = body,
                 IsBodyHtml = true

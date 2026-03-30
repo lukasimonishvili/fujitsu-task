@@ -123,7 +123,7 @@ else
         options.AddPolicy("AllowFrontend",
             policy =>
             {
-                policy.AllowAnyOrigin() 
+                policy.WithOrigins("https://fujitsu-task-frontend.vercel.app")
                       .AllowAnyHeader()
                       .AllowAnyMethod();
             });

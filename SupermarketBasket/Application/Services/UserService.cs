@@ -35,18 +35,18 @@ public class UserService : IUserService
         {
             Email = dto.Email,
             PasswordHash = HashPassword(dto.Password),
-            IsEmailConfirmed = false,
+            IsEmailConfirmed = true,
             EmailConfirmationToken = token
         };
 
         await _repository.AddAsync(user);
-        var confirmationLink = $"http://localhost:4200/confirm-email?token={token}";
+        //var confirmationLink = $"http://localhost:4200/confirm-email?token={token}";
 
-        var emailTask = _emailService.SendEmailAsync(
-            dto.Email,
-            "Confirm your email",
-            $"Click <a href='{confirmationLink}'>here</a> to confirm your email."
-        );
+        //var emailTask = _emailService.SendEmailAsync(
+        //    dto.Email,
+        //    "Confirm your email",
+        //    $"Click <a href='{confirmationLink}'>here</a> to confirm your email."
+        //);
 
         return token;
     }
