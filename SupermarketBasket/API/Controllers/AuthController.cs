@@ -28,8 +28,7 @@ public class AuthController : ControllerBase
 
             return Ok(new
             {
-                message = "User registered. Please confirm email.",
-                token = token
+                message = "User registered succesfuly.",
             });
         }
         catch (Exception ex)
