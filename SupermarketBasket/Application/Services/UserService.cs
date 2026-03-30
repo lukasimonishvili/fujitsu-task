@@ -42,7 +42,7 @@ public class UserService : IUserService
         await _repository.AddAsync(user);
         var confirmationLink = $"http://localhost:4200/confirm-email?token={token}";
 
-        await _emailService.SendEmailAsync(
+        var emailTask = _emailService.SendEmailAsync(
             dto.Email,
             "Confirm your email",
             $"Click <a href='{confirmationLink}'>here</a> to confirm your email."
