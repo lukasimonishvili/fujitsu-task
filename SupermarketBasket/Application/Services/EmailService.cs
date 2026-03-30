@@ -19,6 +19,7 @@ public class EmailService : IEmailService
                 Port = 587,
                 Credentials = new NetworkCredential(emailUser, emailPass),
                 EnableSsl = true,
+                Timeout = 5000
             };
 
             var mail = new MailMessage
